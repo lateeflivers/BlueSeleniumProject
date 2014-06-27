@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeTest;
  * Provides some commonly used methods for writing selenium tests
  * @author Lateef
  * Updated: Jun 27, 2014
+ * TODO Clean up code
  */
 public abstract class BaseTest {
 
@@ -55,13 +56,6 @@ public abstract class BaseTest {
 	}
 		
 		
-		/*
-		 * Sets the url 
-		 * @param url
-		 *
-		public void setURL(String url){
-			this.url = url;
-		}*/
 
 	/**
 	 * Gets the WebElement by the chosen method

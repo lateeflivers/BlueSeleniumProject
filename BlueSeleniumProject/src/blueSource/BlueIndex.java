@@ -15,7 +15,7 @@ import blueModal.BlueManageEmployeeModal;
  *
  */
 public class BlueIndex extends BluePage {
-	
+	//TODO look for a less messy way of handling this
 	private String employeeFirstName;
 	private String employeeLastName;
 	private String employeeFullName;
@@ -132,7 +132,9 @@ public class BlueIndex extends BluePage {
 	 * Clicks the "Add" button and opens the create employee modal
 	 */
 	public void openEmployeeModal(){
+		//TODO add check to make sure this exists before clicking.... or is that already done?
 		getWebElementBy(By.xpath(addButtonXpath)).click();
+	//	getWebElementBy(By.linkText("Add")).click();
 	}
 	
 	/**

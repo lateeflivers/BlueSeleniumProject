@@ -22,6 +22,7 @@ public class BlueEmployee extends BluePage{
 	private double months;
 	private double days;
 	
+	//TODO look for a less messy way of handling this
 	private static final String manageTimeOffXpath = ".//*[@id='accordion']/div/div[7]/div[1]/a[2]";
 	private static final String viewTimeOffXpath = ".//*[@id='accordion']/div/div[7]/div[1]/a[1]";
 	private static final String manageProjectInfoXpath = ".//*[@id='accordion']/div/div[5]/button";

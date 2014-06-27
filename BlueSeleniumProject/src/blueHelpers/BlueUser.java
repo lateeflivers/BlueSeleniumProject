@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Helper class to hold data for a newly generated user
  * @author Lateef
- *
+ * Created Jun 25, 2014
  */
 public class BlueUser {
 	
@@ -58,6 +58,10 @@ public class BlueUser {
 		
 	}
 	
+	/**
+	 * Creates a new consultant and assigns them to a given manager.
+	 * @param employeeManager
+	 */
 	public BlueUser(String employeeManager){
 		employeeFirstName = "Generated" + rand.nextInt(5000)+1;
 		employeeLastName = "User" + rand.nextInt(5000)+1;
@@ -77,6 +81,7 @@ public class BlueUser {
 		IM_Client = "Skype";
 	}
 
+	
 	public String getEmployeeFirstAndLast(){
 		return employeeFirstName+" "+employeeLastName;
 	}
