@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Login page for BlueSource
  * @author Lateef Livers
- * Jan 22, 2014
+ * Created: Jan 22, 2014
+ * Updated: Jun 27, 2014 Code cleanup
  */
 public class BlueLogin extends BluePage {
 	private static final String passwordErrorMessageXpath =  ".//*[@id='new_employee']/div[2]/div[1]";
@@ -38,7 +39,8 @@ public class BlueLogin extends BluePage {
 		String userName;
 		userName = firstName+"."+lastName;
 		userName = userName.toLowerCase();
-		driver.findElement(By.name("employee[username]")).sendKeys(userName);
+		//driver.findElement
+		getWebElementBy(By.name("employee[username]")).sendKeys(userName);
 	}
 	
 	/**
@@ -46,7 +48,9 @@ public class BlueLogin extends BluePage {
 	 * @param password - Users' password
 	 */
 	public void enterPassword(String password){
-		driver.findElement(By.name("employee[password]")).sendKeys(password);
+		
+		//driver.findElement
+		getWebElementBy(By.name("employee[password]")).sendKeys(password);
 	}
 	
 	/**
@@ -55,7 +59,8 @@ public class BlueLogin extends BluePage {
 	 */
 	public BlueIndex submitForm()
 	{
-		driver.findElement(By.name("employee[password]")).submit();
+		getWebElementBy(By.name("employee[password]")).submit();
+		//driver.findElement(By.name("employee[password]")).submit();
 		return new BlueIndex(driver);
 	}
 
@@ -63,7 +68,8 @@ public class BlueLogin extends BluePage {
 	 * Use for incorrect login attempts. Attempts a bad login
 	 */
 	public void submitFormIncorrect(){
-		driver.findElement(By.name("employee[password]")).submit();
+		//driver.findElement
+		getWebElementBy(By.name("employee[password]")).submit();
 	}
 	
 	/**

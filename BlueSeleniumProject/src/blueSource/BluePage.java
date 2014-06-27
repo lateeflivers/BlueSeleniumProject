@@ -10,9 +10,11 @@ import org.openqa.selenium.WebElement;
 
 
 /**
- * Template page for all pages on BlueSource
+ * Template page for all pages on BlueSource. The idea behind this is to help with 
+ * code reuse in regards to page navagation
  * @author Lateef Livers
- * Jan 22, 2014
+ * Created: Jan 22, 2014
+ * Updated: Jun 27, 2014 
  * TODO Make 'Projects' Page *BlueProject. Needs to be created Feb 3, 2014
  * TODO Make 'Directory' Page *BlueDirectory Page needs to be created Feb 3, 2014
  * TODO Make 'My Information' Page *BlueInfomation
@@ -36,7 +38,7 @@ public abstract class BluePage {
 	}
 	
 	/**
-	 * Constructor for driver when no URL is given
+	 * Constructor for driver when no URL is given, Maximizes window
 	 * @param driver
 	 */
 	public BluePage(WebDriver driver){
@@ -46,7 +48,7 @@ public abstract class BluePage {
 	}
 	
 	/**
-	 * Opens webpage
+	 * Opens webpage and navigates to url
 	 * @param url
 	 */
 	public void open(){
@@ -135,7 +137,8 @@ public abstract class BluePage {
 	 * @param text
 	 */
 	protected void sendText(String xpath, String text){
-		driver.findElement(By.xpath(xpath)).sendKeys(text);
+	//	driver.findElement(By.xpath(xpath)).sendKeys(text);
+		getWebElementBy(By.xpath(xpath)).sendKeys(text);
 	}
 	
 	/**
@@ -143,10 +146,11 @@ public abstract class BluePage {
 	 * TODO BlueDirectory class file not currently created Feb 3
 	 */
 	public void Directory(){
-		if(isElementPresent(By.linkText("Directory"))==true){
+		getWebElementBy(By.linkText("Directory")).click();
+/*		if(isElementPresent(By.linkText("Directory"))==true){
 			driver.findElement(By.linkText("Directory")).click();
 			//return new BlueProject(driver);
-		}
+		}*/
 		// return null;
 	}
 	
@@ -155,10 +159,11 @@ public abstract class BluePage {
 	 * TODO Create BlueProject class
 	 */	
 	public void clickProjects(){
-		if(isElementPresent(By.linkText("Projects"))==true){
-			driver.findElement(By.linkText("Projects")).click();	
-			// return new BlueProject(driver);		
-		}
+		getWebElementBy(By.linkText("Projects")).click();
+//		if(isElementPresent(By.linkText("Projects"))==true){
+//			driver.findElement(By.linkText("Projects")).click();	
+//			// return new BlueProject(driver);		
+//		}
 		//return null;
 	}
 	
@@ -167,27 +172,31 @@ public abstract class BluePage {
 	 * @return a new BlueEmployee if true, NULL otherwise
 	 */	
 	public BlueIndex clickEmployees(){
-		if(isElementPresent(By.linkText("Employees"))==true){
+		getWebElementBy(By.linkText("Employees")).click();
+		return new BlueIndex(driver);
+/*		if(isElementPresent(By.linkText("Employees"))==true){
 			driver.findElement(By.linkText("Employees")).click();
 			return new BlueIndex(driver);
 		}
-		return null;
+		return null;*/
 	}
 	
 	/**
 	 * Click the "Logout" link at the top of the page
 	 */	
 	public void clickLogout(){
-		if(isElementPresent(By.linkText("Logout"))==true)
-			driver.findElement(By.linkText("Logout")).click();
+		getWebElementBy(By.linkText("Logout")).click();	
+/*		if(isElementPresent(By.linkText("Logout"))==true)
+			driver.findElement(By.linkText("Logout")).click();*/
 	}
 
 	/**
 	 * Clicks the "help" icon
 	 */
 	public void clickHelp(){
-		if(isElementPresent(By.className("help-icon"))==true)
-			driver.findElement(By.className("help-icon")).click();
+		getWebElementBy(By.className("help-icon")).click();
+/*		if(isElementPresent(By.className("help-icon"))==true)
+			driver.findElement(By.className("help-icon")).click();*/
 	}
 
 	/**
@@ -195,8 +204,9 @@ public abstract class BluePage {
 	 * @param text
 	 */
 	public void searchBar(String text){
-		if(isElementPresent(By.id("search-bar")))
-			driver.findElement(By.id("search-bar")).sendKeys(text);		
+		getWebElementBy(By.id("search-bar")).sendKeys(text);		
+/*		if(isElementPresent(By.id("search-bar")))
+			driver.findElement(By.id("search-bar")).sendKeys(text);	*/	
 
 	}
 	
@@ -209,7 +219,7 @@ public abstract class BluePage {
 
 		getWebElementBy(By.xpath(showInactiveXpath)).click();
 	}
-	
+	//TODO Add other buttons here or way to find a button randomly?
 	/**
 	 * Clicks the "Add" button for adding a new employee
 	 */

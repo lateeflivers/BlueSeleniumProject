@@ -6,9 +6,9 @@ import blueModal.BlueManageEmployeeModal;
 
 
 /**
- * Employee Page
+ * Employee Page extends from BluePage
  * @author Lateef Livers
- * Jan 22, 2014
+ * Created: Jan 22, 2014
  * Updated: Jun 27, 2014
  * TODO logic for General info Modal Feb 3, 2014 Update: in progress see ManageEmployeeModal
  */

@@ -39,7 +39,7 @@ public class BlueIndex extends BluePage {
 	}
 
 	/**
-	 * Constructor for index page when first and last name are not given
+	 * Default constructor for index page when first and last name are not given
 	 * @param driver
 	 */
 	public BlueIndex(WebDriver driver){
@@ -77,19 +77,19 @@ public class BlueIndex extends BluePage {
 	
 	
 	/**
-	 * Searches for a employee
-	 * @param First
-	 * @param Last
+	 * Searches for a employee, Also sets EmployeeFullName, FirstName, and LastName
+	 * @param FirstName
+	 * @param LastName
 	 */
-	public void searchEmployee(String First, String Last){
-		setEmployeeFullName(First, Last);
-		setFirstName(First);
-		setLastName(Last);
+	public void searchEmployee(String FirstName, String LastName){
+		setEmployeeFullName(FirstName, LastName);
+		setFirstName(FirstName);
+		setLastName(LastName);
 		searchBar(employeeFullName);
 	}
 	
 	/**
-	 * Navigates to the selected  employees page
+	 * Navigates to the selected employees page. Clicks on the employee's Last Name
 	 * @return BlueEmployee
 	 */
 	public BlueEmployee selectEmployee(){
@@ -103,11 +103,11 @@ public class BlueIndex extends BluePage {
 	
 	/**
 	 * Sets the employeeFullName to 'FirstName LastName'
-	 * @param First
-	 * @param Last
+	 * @param FirstName
+	 * @param LastName
 	 */
-	private void setEmployeeFullName(String First, String Last){
-		employeeFullName = First+" "+Last;
+	private void setEmployeeFullName(String FirstName, String LastName){
+		employeeFullName = FirstName+" "+LastName;
 	}
 	
 	/**
@@ -118,21 +118,20 @@ public class BlueIndex extends BluePage {
 	}
 
 	/**
-	 * Opens the Employee modal and enters in all relavent data.
+	 * Opens the Employee modal and enters in all relevant data.
 	 * @param newEmployee
 	 */
 	public void addNewEmployee(BlueUser newEmployee){
 		openEmployeeModal();
 		AddEmployee.fillFields(newEmployee);
 		AddEmployee.AddUser();
-	//	newEmployee.
 	}
 
 	/**
 	 * Clicks the "Add" button and opens the create employee modal
 	 */
 	public void openEmployeeModal(){
-		//TODO add check to make sure this exists before clicking.... or is that already done?
+		//TODO find a way to click on the button in a way other than xpath or css.
 		getWebElementBy(By.xpath(addButtonXpath)).click();
 	//	getWebElementBy(By.linkText("Add")).click();
 	}
@@ -149,6 +148,7 @@ public class BlueIndex extends BluePage {
 	 * @return text
 	 */
 	public String getFlashMessage(){
+		//Should this be a try/catch block?
 		if(isElementPresentAndDisplayed(By.xpath(flashMessagePanelXpath)))
 			return getWebElementBy(By.xpath(flashMessagePanelXpath)).getText();
 		

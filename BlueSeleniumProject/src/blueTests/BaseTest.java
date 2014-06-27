@@ -13,9 +13,10 @@ import org.testng.annotations.BeforeTest;
 	
 /**
  * Provides some commonly used methods for writing selenium tests
- * @author Lateef
+ * @author Lateef Livers
  * Updated: Jun 27, 2014
  * TODO Clean up code
+ * TODO I have a few methods being reused in various places. I should look into interfaces maybe?
  */
 public abstract class BaseTest {
 
@@ -25,6 +26,9 @@ public abstract class BaseTest {
 	protected static WebElement element;
 	private static String url;
 		
+	/**
+	 * Sets up driver and timeout
+	 */
 	@BeforeTest
 	public static void initializeTest(){
 		driver = new InternetExplorerDriver();
@@ -124,8 +128,10 @@ public abstract class BaseTest {
 	 * @param path
 	 */
 	private void setTextPath(String text, By path){
-		driver.findElement(path).clear();
-		driver.findElement(path).sendKeys(text);
+		//driver.findElement(path)
+		getWebElementBy(path).clear();
+		//driver.findElement(path).
+		getWebElementBy(path).sendKeys(text);
 	}
 		
 	/**
