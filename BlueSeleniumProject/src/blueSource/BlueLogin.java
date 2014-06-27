@@ -90,10 +90,11 @@ public class BlueLogin extends BluePage {
 	 * @param lastName
 	 * @param password
 	 */
-	public void validLogin(String firstName, String lastName, String password){
+	public BlueIndex validLogin(String firstName, String lastName, String password){
 		enterFirstAndLastName(firstName, lastName);
 		enterPassword(password);
 		submitForm();
+		return new BlueIndex(driver);
 		
 	}
 }

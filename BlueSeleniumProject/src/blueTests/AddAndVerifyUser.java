@@ -1,6 +1,9 @@
 package blueTests;
 
-import static org.testng.AssertJUnit.assertEquals;
+//import static org.testng.AssertJUnit.assertTrue;
+//import static org.testng.AssertJUnit.assertEquals;
+import org.testng.Assert;
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +18,11 @@ import blueSource.BlueEmployee;
 import blueSource.BlueIndex;
 import blueSource.BlueLogin;
 
+/**
+ * Test to add new empolyee and verify that it was created
+ * @author Lateef Livers
+ * Created Jun 27, 2014
+ */
 public class AddAndVerifyUser extends BaseTest {
 
 	public static BlueUser user;
@@ -29,10 +37,12 @@ public class AddAndVerifyUser extends BaseTest {
 	 */
 	public void LoginIntoSite(String url, String firstName, String lastName, String password ){
 		BlueLogin loginPage = new BlueLogin(driver);
+		BlueIndex indexPage;
 		
 		loginPage.setURL(url);
 		loginPage.open();
-		loginPage.validLogin(firstName, lastName, password);
+		indexPage = loginPage.validLogin(firstName, lastName, password);
+		Assert.assertTrue(indexPage.getWelcomeTitle().contains(firstName)==true,"Login unsucessful");
 
 
 	}
@@ -51,7 +61,7 @@ public class AddAndVerifyUser extends BaseTest {
 	
 	
 	/**
-	 * Test creates a new user and verifies it was successfully created
+	 * Test creates a new user and verifies it was successfully created, Also write out the user name of the generated user to a text file called "RandomlyCreatedUsers.txt"
 	 * @param url
 	 * @param firstName
 	 * @param lastName
@@ -66,14 +76,16 @@ public class AddAndVerifyUser extends BaseTest {
 		
 		
 		AddUser(manager);
-
+		
 		System.out.println("Created user"+ user.getEmployeeFullName());
 		BlueIndex indexPage = new BlueIndex(driver);
+	//	assertEquals(indexPage.getFlashMessage(), "Employee added successfully.");
+		Assert.assertTrue( indexPage.getFlashMessage().contains("Employee added successfully.")==true,"User not created");
 		indexPage.searchBar(user.getEmployeeFirstAndLast());
 		indexPage.setFirstName(user.getEmployeeFirstName());
 		indexPage.setLastName(user.getEmployeeLastName());
 		BlueEmployee EmployeePage =  indexPage.selectEmployee();
-		assertEquals(EmployeePage.getEmpolyeeName(), user.getEmployeeFullName());
+		Assert.assertEquals(EmployeePage.getEmpolyeeName(), user.getEmployeeFullName(), "User not found");
 		EmployeePage.clickLogout();
 		
 

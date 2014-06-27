@@ -11,6 +11,7 @@ import blueModal.BlueManageEmployeeModal;
  * Index Page
  * @author Lateef Livers
  * Jan 22, 2014
+ * Updated: Jun 27, 2014
  *
  */
 public class BlueIndex extends BluePage {
@@ -19,6 +20,9 @@ public class BlueIndex extends BluePage {
 	private String employeeLastName;
 	private String employeeFullName;
 	private static String addButtonXpath = ".//*[@id='all-content']/div[2]/div/div[2]/button";
+	private static String showInactivesXpath = "html/body/div[1]/section/div[1]/div[2]/div/div[1]/label";
+	private static String flashMessagePanelXpath = "html/body/div[1]/section/div[1]/div[1]";
+	private static String welcomeHeaderXpath ="html/body/div[1]/section/div[1]/h1";
 	protected BlueManageEmployeeModal AddEmployee;
 	
 	/**
@@ -113,12 +117,48 @@ public class BlueIndex extends BluePage {
 		employeeFullName = employeeFirstName+" "+employeeLastName;
 	}
 
+	/**
+	 * Opens the Employee modal and enters in all relavent data.
+	 * @param newEmployee
+	 */
 	public void addNewEmployee(BlueUser newEmployee){
-		getWebElementBy(By.xpath(addButtonXpath)).click();
+		openEmployeeModal();
 		AddEmployee.fillFields(newEmployee);
 		AddEmployee.AddUser();
 	//	newEmployee.
 	}
 
+	/**
+	 * Clicks the "Add" button and opens the create employee modal
+	 */
+	public void openEmployeeModal(){
+		getWebElementBy(By.xpath(addButtonXpath)).click();
+	}
+	
+	/**
+	 * Clicks the "Show Inactives" button
+	 */
+	public void toggleInactives(){
+		getWebElementBy(By.xpath(showInactivesXpath)).click();
+	}
+	
+	/**
+	 * Returns the flash message if present, returns null otherwise
+	 * @return text
+	 */
+	public String getFlashMessage(){
+		if(isElementPresentAndDisplayed(By.xpath(flashMessagePanelXpath)))
+			return getWebElementBy(By.xpath(flashMessagePanelXpath)).getText();
+		
+		return null;
+	}
+	
+	/**
+	 * Returns the Welcome, %NAME text string
+	 * @return text
+	 */
+	public String getWelcomeTitle(){
+		return getWebElementBy(By.xpath(welcomeHeaderXpath)).getText();
+	}
 
 }

@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeTest;
 /**
  * Provides some commonly used methods for writing selenium tests
  * @author Lateef
- *
+ * Updated: Jun 27, 2014
  */
 public abstract class BaseTest {
 
