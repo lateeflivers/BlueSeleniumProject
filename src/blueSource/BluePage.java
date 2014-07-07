@@ -90,6 +90,7 @@ public abstract class BluePage {
 		if(isElementPresent(locator)==true){
 			return driver.findElement(locator);
 		}
+			System.err.println("Not Found");
 			return null;
 		
 	}
@@ -215,38 +216,54 @@ public abstract class BluePage {
 	/*Buttons */
 	
 	/**
-	 * finds and clicks target button, currently uses By.name("options") will probably generalize a bit
+	 * Finds and clicks target button, currently uses By.name("options") will probably generalize a bit
+	 * @author Lateef Livers
+	 * Created: Jul 1, 2014
 	 * @param ButtonName
 	 */
 	public void clickButton(String ButtonName){
 		findButtons(ButtonName);
 	}
 	
+	/**
+	 * Finds and clicks target button, 
+	 * @author Lateef Livers
+	 * Created: Jul 1, 2014
+	 * @param ButtonName -Name of button
+	 * @param byNamePath	-(i.e. By.xpath(path), By.name(path))
+	 */
 	public void clickButton(String ButtonName, String byNamePath){
 		findButtons(ButtonName, byNamePath);
 	}
 	
 	
 	/**
-	 * Finds the target button and clicks it
+	 * Finds the target button and clicks it.  By.name("Options")
 	 * @param target
 	 */
 	private void findButtons(String target){
 		buttonsCollection = driver.findElements(By.name("options"));
 		
 		for(WebElement btnElement: buttonsCollection){
-			if(btnElement.getText() == target){
+			if(btnElement.getText().contains(target)){
 				btnElement.click();
 				break;
 			}
 		}
 	}
 	
+	
+	/**
+	 * More general method. 
+	 * TODO test this
+	 * @param target
+	 * @param byNamePath
+	 */
 	private void findButtons(String target, String byNamePath){
 		buttonsCollection = driver.findElements(By.name(byNamePath));
 		
 		for(WebElement btnElement: buttonsCollection){
-			if(btnElement.getText() == target){
+			if(btnElement.getText().contains(target)){
 				btnElement.click();
 				break;
 			}

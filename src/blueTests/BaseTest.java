@@ -16,7 +16,6 @@ import org.testng.annotations.BeforeTest;
  * @author Lateef Livers
  * Updated: Jun 27, 2014
  * TODO Clean up code
- * TODO I have a few methods being reused in various places. I should look into interfaces maybe?
  */
 public abstract class BaseTest {
 

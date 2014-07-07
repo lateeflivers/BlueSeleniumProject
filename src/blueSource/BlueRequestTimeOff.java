@@ -97,8 +97,7 @@ public class BlueRequestTimeOff extends BluePage {
 		getWebElementBy(By.xpath(MemoEditFormXpath)).sendKeys(text);
 	}
 	
-	//TODO ask Lew if this should be 'Save Time Off' instead of 'Save Vacation'
-	//
+
 	/**
 	 * Clicks the 'Save Vacation' Button to save and send off request
 	 */

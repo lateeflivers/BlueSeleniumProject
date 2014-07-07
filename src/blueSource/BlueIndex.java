@@ -1,6 +1,7 @@
 package blueSource;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import blueHelpers.BlueUser;
@@ -131,9 +132,8 @@ public class BlueIndex extends BluePage {
 	 * Clicks the "Add" button and opens the create employee modal
 	 */
 	public void openEmployeeModal(){
-		//TODO find a way to click on the button in a way other than xpath or css.
-		getWebElementBy(By.xpath(addButtonXpath)).click();
-		clickButton("Add");
+	//	getWebElementBy(By.xpath(addButtonXpath)).click();
+		clickButton("Add", "button");
 	//	getWebElementBy(By.linkText("Add")).click();
 	}
 	
@@ -141,7 +141,8 @@ public class BlueIndex extends BluePage {
 	 * Clicks the "Show Inactives" button
 	 */
 	public void toggleInactives(){
-		getWebElementBy(By.xpath(showInactivesXpath)).click();
+		clickButton("Show Inactives");
+	//	getWebElementBy(By.xpath(showInactivesXpath)).click();
 	}
 	
 	/**
@@ -150,8 +151,14 @@ public class BlueIndex extends BluePage {
 	 */
 	public String getFlashMessage(){
 		//Should this be a try/catch block?
-		if(isElementPresentAndDisplayed(By.xpath(flashMessagePanelXpath)))
+		//if(isElementPresentAndDisplayed(By.xpath(flashMessagePanelXpath)))
+		try{
 			return getWebElementBy(By.xpath(flashMessagePanelXpath)).getText();
+		}catch(NoSuchElementException ne){
+			System.err.println("Element not found");
+		
+		}
+		
 		
 		return null;
 	}
