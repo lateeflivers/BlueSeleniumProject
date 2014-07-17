@@ -27,10 +27,18 @@ public class BlueUser {
 	private String employeeFullName;
 
 
+	/**
+	 * Gets the IM name
+	 * @return string IM_name
+	 */
 	public  String getIM_name() {
 		return IM_name;
 	}
 
+	/**
+	 * Sets IM name
+	 * @param iM_name
+	 */
 	public  void setIM_name(String iM_name) {
 		IM_name = iM_name;
 	}
@@ -60,7 +68,7 @@ public class BlueUser {
 	
 	/**
 	 * Creates a new consultant and assigns them to a given manager.
-	 * @param employeeManager
+	 * @param employeeManager name of employees manager
 	 */
 	public BlueUser(String employeeManager){
 		employeeFirstName = "Generated" + rand.nextInt(5000)+1;
@@ -81,10 +89,14 @@ public class BlueUser {
 		IM_Client = "Skype";
 	}
 
-	
+	/**
+	 * Returns  the employees first and last name
+	 * @return
+	 */
 	public String getEmployeeFirstAndLast(){
 		return employeeFirstName+" "+employeeLastName;
 	}
+	
 	public String getEmployeeFirstName() {
 		return employeeFirstName;
 	}

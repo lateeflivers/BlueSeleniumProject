@@ -2,8 +2,8 @@
 
 <suite name="Suite1" verbose="1">
 	<test name="AddAndVerifyUser"  preserve-order="true">
-		<parameter name="firstName" value="linley" />
-		<parameter name="lastName" value="love" />
+		<parameter name="firstName" value="company" />
+		<parameter name="lastName" value="admin" />
 		<parameter name="password" value="anything" />
 		<parameter name="url" value="http://bluesourcestaging.herokuapp.com/" />
 		<parameter name="manager" value="Perry Thomas" />

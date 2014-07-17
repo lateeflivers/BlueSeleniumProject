@@ -8,6 +8,12 @@ import org.openqa.selenium.support.ui.Select;
  * TODO Logic for determining vacation accrual rates Feb 3
  * TODO Method for grabbing number of Min/Max days for each PDO type. 
  */
+/**
+ * Handles navigation and button operations 
+ * @author Lateef Livers
+ * Updated: Jul 16, 2014
+ *
+ */
 public class BlueRequestTimeOff extends BluePage {
 	
 	private static final String EmailManagerButtonXpath = "html/body/div[1]/div[2]/a";
@@ -43,6 +49,10 @@ public class BlueRequestTimeOff extends BluePage {
 		getWebElementBy(By.xpath(RequestTimeOffButtonXpath)).click();
 	}
 
+	/**
+	 * Constructor
+	 * @param driver
+	 */
 	public BlueRequestTimeOff(WebDriver driver) {
 		super(driver);
 	}

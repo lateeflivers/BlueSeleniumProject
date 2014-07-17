@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import blueModal.TimeOffDetailsModal;
 
 /**
- * Time off details page
+ * Time off details page, handles navigation for the time off page
  * @author Lateef Livers
  * Jan 22, 2014
  */

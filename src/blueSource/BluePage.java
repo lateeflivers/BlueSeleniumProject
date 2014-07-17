@@ -8,7 +8,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
+/*
+ * 
+ * TODO Make 'Projects' Page *BlueProject. Needs to be created Feb 3, 2014
+ * TODO Make 'Directory' Page *BlueDirectory Page needs to be created Feb 3, 2014
+ * TODO Make 'My Information' Page *BlueInfomation
+ */
 
 /**
  * Template page for all pages on BlueSource. The idea behind this is to help with 
@@ -16,9 +21,7 @@ import org.openqa.selenium.WebElement;
  * @author Lateef Livers
  * Created: Jan 22, 2014
  * Updated: Jun 27, 2014 
- * TODO Make 'Projects' Page *BlueProject. Needs to be created Feb 3, 2014
- * TODO Make 'Directory' Page *BlueDirectory Page needs to be created Feb 3, 2014
- * TODO Make 'My Information' Page *BlueInfomation
+ * @link bluesourcestaging.herokuapp.com/
  */
 public abstract class BluePage {
 	
@@ -254,9 +257,8 @@ public abstract class BluePage {
 	
 	
 	/**
-	 * More general method. 
-	 * TODO test this
-	 * @param target
+	 * Finds and clicks on the button passed to it
+	 * @param target Name of button to be clicked
 	 * @param byNamePath
 	 */
 	private void findButtons(String target, String byNamePath){
@@ -270,13 +272,15 @@ public abstract class BluePage {
 		}
 		
 	}
+	
 	/**
-	 * Clicks the Show Inactives button
+	 * Clicks the Show 'Inactives' button
 	 */
 	public void toggleInactive(){
 
 		getWebElementBy(By.xpath(showInactiveXpath)).click();
 	}
+	
 	//TODO Add other buttons here or way to find a button randomly?
 	/**
 	 * Clicks the "Add" button for adding a new employee
